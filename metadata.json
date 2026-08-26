@@ -1,0 +1,6 @@
+{
+  "name": "Билим Материалдары",
+  "description": "Платформа для продажи и защищенного доступа к авторским учебным материалам для учителей Кыргызстана",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

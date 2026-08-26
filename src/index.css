@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Dedicated Print Styles for Watermarked Documents */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  /* Only allow printing if the document is explicitly marked with data-print-authorized="true" */
+  body[data-print-authorized="true"] #printable-material-document,
+  body[data-print-authorized="true"] #printable-material-document * {
+    visibility: visible;
+  }
+
+  body[data-print-authorized="true"] #printable-material-document {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 15mm !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  /* Block unauthorized print attempts by default */
+  body:not([data-print-authorized="true"])::after {
+    visibility: visible;
+    position: fixed;
+    top: 30%;
+    left: 10%;
+    right: 10%;
+    content: "ПЕЧАТЬ ЗАБЛОКИРОВАНА: Пожалуйста, используйте официальную кнопку «Басып чыгаруу / Печать» в приложении для списания попытки и генерации водяного знака.";
+    font-size: 14pt;
+    text-align: center;
+    font-weight: bold;
+    color: #c00;
+  }
+
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+}
